@@ -12,7 +12,7 @@ class loginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.blue
+        //view.backgroundColor = UIColor.blue
         // Do any additional setup after loading the view, typically from a nib.
     }
 

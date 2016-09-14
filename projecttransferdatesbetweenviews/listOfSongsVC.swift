@@ -10,9 +10,29 @@ import UIKit
 
 class listOfSongsVC: UIViewController {
 
+
+    @IBOutlet weak var textFieldSongTitleInput: UITextField!
+    
+    private var _clearTextField: Int = 1
+    
+    
+    var clearTextField: Int {
+        get {
+            return _clearTextField
+        } set {
+            _clearTextField = 0
+        }
+     }
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        if _clearTextField == 0 {
+            textFieldSongTitleInput.text = ""
+        }
 
+        
         // Do any additional setup after loading the view.
     }
 
@@ -25,7 +45,20 @@ class listOfSongsVC: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func load3rdScrean(_ sender: UIButton) {
+        performSegue(withIdentifier: "playSongVC", sender: textFieldSongTitleInput.text)
+    }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let destination = segue.destination as? playSongVC {
+                if let song = sender as? String {
+                    destination.selectedSong = song
+                }
+            }
+        
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -36,4 +69,4 @@ class listOfSongsVC: UIViewController {
     }
     */
 
-}
+
